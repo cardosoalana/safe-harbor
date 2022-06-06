@@ -1,0 +1,151 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0; 
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #FFE790;
+    overflow-x: hidden;
+    padding-top: 60px; 
+    transition: 0.5s; 
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    font-size: 15px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    margin-top: 40px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+    margin-top: 3%;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.chat {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+  
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+}
+  
+.chat::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+  
+.chat img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+  
+.chat img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+} 
+  
+.time-right {
+    float: right;
+    color: #aaa;
+}
+  
+.time-left {
+    float: left;
+    color: #999;
+}
+
+.send-message {
+    background: white;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 2%;
+    width: 100%;
+}
+
+.message-text {
+    background: #ccc;
+    min-height: 1em;
+    max-height: 97px;
+    width: 100%;
+    align-content: center;
+    outline: none;
+    overflow: hidden;
+}
+
+.message-wrapper {
+    width: 387px;
+    border: 1px solid #e4e7ec;
+    border-radius: 20px;
+    background-color: #ccc;
+    padding: 24px;
+    max-height: 145px;
+}
+  
+textarea {
+    resize: none;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 41px;
+    max-height: 97px;
+    width: 387px;
+    border: 1px solid #e4e7ec;
+    border-radius: 20px;
+    background-color: #f9fafb;
+    outline: none;
+    padding: 0 24px 0 24px;
+    overflow: hidden;
+}
+
+.send-button {
+    height: 50px;
+    width: 50px;
+    margin-right: 40%;
+    margin-left: 40%;
+    margin-top: 2%;
+}
+
+#userFriendsList li{
+    display: block;
+    font-size: 16px;
+    color: black;
+    margin-top: 3%;
+}
+
+#userFriendsList li:hover{
+    font-size: 20px;
+    color: black;
+}

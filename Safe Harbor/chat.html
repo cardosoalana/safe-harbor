@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Safe Harbor - Blog</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" media="screen" href="homeStyle.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="chatStyle.css" />
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+        <script src="jquery-3.6.0.min.js"></script>
+    </head>
+
+    <body>
+        <nav id="navbar" class="navbar navbar-default navbar-fixed-top">
+            <div class="container" style="display:inline-block">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+
+                    <a class="navbar-brand" href="#safeHarbor" style="margin: 5px; font-size:20px" >Safe Harbor</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right" style="display:inline-block; margin-top: 5px;">
+                        <li  onclick="openNav()"><a href="#chat">Chat</a></li>
+                        <li><a href="profile.html">Perfil</a></li>
+                        <li><a href="#about">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a style="font-size: 20px;">Amigos:</a> 
+            <ul id="userFriendsList">
+                <li id="friend1" onclick="getUserMessage(1)">Nicoly</li>
+                <li id="friend2" onclick="getUserMessage(2)">Nathan</li>
+                <li id="friend3" onclick="getUserMessage(3)">Carlos</li>
+            </ul>
+        </div>
+        <div id="main">
+            <div>
+                <h2 id="friendName">Pessoa 1</h2> 
+                <p id="friendProfession"></p>
+
+                <div style="height:350px; width:100%; overflow: auto;" id="container-description">
+                </div>
+            </div>
+
+            <div class="row send-message">
+                <div  style="align-items: center; position: relative;">
+                    <div id="chatBox"  class="row">
+                        <div class="col-11 message-wrapper">
+                            <div class="message-text" contentEditable></div>
+                        </div>
+                        <div class="mt-5 col-1">
+                            <img class="send-button" src="send.png">
+                        </div>  
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script>    
+        let textFriend1 ='{ "userFriend": "Nicoly",' +
+            ' "userFriendProfession": "Psicóloga", ' +
+            ' "messages" : [' +
+            '{ "username": "Alana",' +
+            ' "usernameFriend": "Nicoly",' +
+            ' "userFriendProfession": "Psicóloga",' +
+            ' "date": "17/05/22 - 22:10",' +
+            ' "description": "Oi! Tudo bem? blá blá blá",' +
+            ' "isUserMessage": true},' +
+            '{ "username": "Alana",' +
+            ' "usernameFriend": "Nicoly",' +
+            ' "userFriendProfession": "Psicóloga",' +
+            ' "date": "17/05/22 - 22:10",' +
+            ' "description": "Oi! Tudo bem? blá blá blá",' +
+            ' "isUserMessage": true},' +
+            '{ "username": "Alana",' +
+            ' "usernameFriend": "Nicoly",' +
+            ' "userFriendProfession": "Psicóloga",' +
+            ' "date": "17/05/22 - 22:10",' +
+            ' "description": "Oi! Tudo bem? blá blá blá",' +
+            ' "isUserMessage": true}]}';
+
+        let textFriend2 ='{ "userFriend": "Nathan",' +
+            ' "userFriendProfession": "Psico Pedagogo", ' +
+            ' "messages" : [' +
+            '{ "username": "Alana",' +
+            ' "usernameFriend": "Nathan",' +
+            ' "userFriendProfession": "Psico Pedagogo",' +
+            ' "date": "17/05/22 - 22:10",' +
+            ' "description": "Oi! Tudo bem? blá blá blá",' +
+            ' "isUserMessage": true},' +
+            '{ "username": "Alana",' +
+            ' "usernameFriend": "Nathan",' +
+            ' "userFriendProfession": "Psico Pedagogo",' +
+            ' "date": "17/05/22 - 22:10",' +
+            ' "description": "Oi! Tudo bem? blá blá blá",' +
+            ' "isUserMessage": true},' +
+            '{ "username": "Alana",' +
+            ' "usernameFriend": "Nathan",' +
+            ' "userFriendProfession": "Psico Pedagogo",' +
+            ' "date": "17/05/22 - 22:10",' +
+            ' "description": "Oi! Tudo bem? blá blá blá",' +
+            ' "isUserMessage": true}]}';
+
+        let textFriend3 ='{ "userFriend": "Carlos",' +
+            ' "userFriendProfession": "Psicóloga", ' +
+            ' "messages" : [' +
+            '{ "username": "Alana",' +
+            ' "usernameFriend": "Carlos",' +
+            ' "userFriendProfession": "Psiquiatra",' +
+            ' "date": "17/05/22 - 22:10",' +
+            ' "description": "Oi! Tudo bem? blá blá blá",' +
+            ' "isUserMessage": true},' +
+            '{ "username": "Alana",' +
+            ' "usernameFriend": "Carlos",' +
+            ' "userFriendProfession": "Psiquiatra",' +
+            ' "date": "17/05/22 - 22:10",' +
+            ' "description": "Oi! Tudo bem? blá blá blá",' +
+            ' "isUserMessage": true},' +
+            '{ "username": "Alana",' +
+            ' "usernameFriend": "Carlos",' +
+            ' "userFriendProfession": "Psiquiatra",' +
+            ' "date": "17/05/22 - 22:10",' +
+            ' "description": "Oi! Tudo bem? blá blá blá",' +
+            ' "isUserMessage": true}]}';
+
+        function getUserMessage(userFriend) {
+            switch (userFriend) {
+                case 1: 
+                    cleanChat();                  
+                    const obj1 = JSON.parse(textFriend1);
+                    console.log(obj1);
+
+                    var htmlDescription = "";
+
+                    document.getElementById("friendName").innerHTML = obj1.userFriend;
+                    document.getElementById("friendProfession").innerHTML = obj1.userFriendProfession;
+                    
+                    for (let message of obj1.messages){
+                        htmlDescription += `<div class="chat" id=""><img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">`;
+                        htmlDescription += `<p id="description">${message.description}</p><span class="time-right">11:00</span></div>`;
+                    };
+
+                    $("#container-description").append(htmlDescription);
+                    break;
+                    
+                case 2:
+                    const obj2 = JSON.parse(textFriend2);
+                    console.log(obj2);
+
+                    document.getElementById("friendName").innerHTML = obj2.userFriend;
+                    document.getElementById("friendProfession").innerHTML = obj2.userFriendProfession;
+                    
+                    var htmlDescription = "";
+
+                    for (let message of obj2.messages){
+                        htmlDescription += `<div class="chat" id=""><img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">`;
+                        htmlDescription += `<p id="description">${message.description}</p><span class="time-right">11:00</span></div>`;
+                    };
+
+                    $("#container-description").append(htmlDescription);
+                    break;
+
+                case 3:
+                    const obj3 = JSON.parse(textFriend3);
+                    console.log(obj3);
+
+                    document.getElementById("friendName").innerHTML = obj3.userFriend;
+                    document.getElementById("friendProfession").innerHTML = obj3.userFriendProfession;
+                    
+                    var htmlDescription = "";
+
+                    for (let message of obj3.messages){
+                        htmlDescription += `<div class="chat" id=""><img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">`;
+                        htmlDescription += `<p id="description">${message.description}</p><span class="time-right">11:00</span></div>`;
+                    };
+
+                    $("#container-description").append(htmlDescription);
+
+                    break;    
+            } 
+        }
+
+        function cleanChat() {
+            let chatDiv = document.getElementById("#container-description");
+            chatDiv.innerHTML = "";
+
+        }
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.getElementById("chatBox").style.marginLeft = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.getElementById("chatBox").style.marginLeft = "0";
+        }
+    </script>
+</html>

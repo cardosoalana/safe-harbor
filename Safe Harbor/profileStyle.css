@@ -1,0 +1,32 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.8;
+    background: #FFE790;
+}
+
+.div-body {
+    margin-top: 10%;
+}
+
+.info-container {
+    margin: 5%;
+}
+
+.info-container img {
+    height: 20px;
+    width: 20px;
+    padding: 2px;
+    margin-right: 5px;
+}
+
+.emotions-container {
+    margin-bottom: 5%;
+}
+
+.blue-text {
+    color: #31576D;
+}
+
+.background-dark-blue {
+    background:#31576D;
+}
