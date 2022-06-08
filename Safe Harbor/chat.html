@@ -49,120 +49,148 @@
                 <li id="friend3" onclick="getUserMessage(3)">Carlos</li>
             </ul>
         </div>
-        <div id="main">
-            <div>
-                <h2 id="friendName">Pessoa 1</h2> 
-                <p id="friendProfession"></p>
 
-                <div style="height:350px; width:100%; overflow: auto;" id="container-description">
-                </div>
+        <main>
+            <div id="initial-div">
+                <p>Selecione um chat para iniciar uma conversa!</p>
             </div>
 
-            <div class="row send-message">
-                <div  style="align-items: center; position: relative;">
-                    <div id="chatBox"  class="row">
-                        <div class="col-11 message-wrapper">
-                            <div class="message-text" contentEditable></div>
-                        </div>
-                        <div class="mt-5 col-1">
-                            <img class="send-button" src="send.png">
-                        </div>  
-                    </div> 
+            <div id="main">
+                <div>
+                    <h2 id="friendName">Pessoa 1</h2> 
+                    <p id="friendProfession"></p>
+    
+                    <div style="height:350px; width:100%; overflow: auto;" id="container-description-user1">
+                    </div>
+                    <div style="height:350px; width:100%; overflow: auto;" id="container-description-user2">
+                    </div>
+                    <div style="height:350px; width:100%; overflow: auto;" id="container-description-user3">
+                    </div>
+                </div>
+    
+                <div class="row send-message">
+                    <div  style="align-items: center; position: relative;">
+                        <div id="chatBox"  class="row">
+                            <div class="col-11 message-wrapper">
+                                <div class="message-text" id="message-text" contenteditable="">
+    
+                                </div>
+                            </div>
+                            <div class="mt-5 col-1">
+                                <img class="send-button" id="send-button1" src="./images/send.png" onclick="addNewComent(1)">
+                                <img class="send-button" id="send-button2" src="./images/send.png" onclick="addNewComent(2)">
+                                <img class="send-button" id="send-button3" src="./images/send.png" onclick="addNewComent(3)">
+                            </div>  
+                        </div> 
+                    </div>
                 </div>
             </div>
-        </div>
+        </main>
+       
     </body>
 
     <script>    
         let textFriend1 ='{ "userFriend": "Nicoly",' +
             ' "userFriendProfession": "Psicóloga", ' +
             ' "messages" : [' +
-            '{ "username": "Alana",' +
+            '{ "username": "Nicoly",' +
+            ' "userFriendProfession": "Psicóloga",' +
+            ' "date": "17/05/22 - 22:10",' +
+            ' "description": "Oi! Tudo bem? blá blá blá",' +
+            ' "isUserMessage": true},' +
+            '{ "username": "Eu",' +
             ' "usernameFriend": "Nicoly",' +
             ' "userFriendProfession": "Psicóloga",' +
             ' "date": "17/05/22 - 22:10",' +
             ' "description": "Oi! Tudo bem? blá blá blá",' +
             ' "isUserMessage": true},' +
-            '{ "username": "Alana",' +
+            '{ "username": "Nicoly",' +
             ' "usernameFriend": "Nicoly",' +
             ' "userFriendProfession": "Psicóloga",' +
             ' "date": "17/05/22 - 22:10",' +
-            ' "description": "Oi! Tudo bem? blá blá blá",' +
-            ' "isUserMessage": true},' +
-            '{ "username": "Alana",' +
-            ' "usernameFriend": "Nicoly",' +
-            ' "userFriendProfession": "Psicóloga",' +
-            ' "date": "17/05/22 - 22:10",' +
-            ' "description": "Oi! Tudo bem? blá blá blá",' +
+            ' "description": "Oi! blá blá blá",' +
             ' "isUserMessage": true}]}';
 
         let textFriend2 ='{ "userFriend": "Nathan",' +
             ' "userFriendProfession": "Psico Pedagogo", ' +
             ' "messages" : [' +
-            '{ "username": "Alana",' +
+            '{ "username": "Nathan",' +
             ' "usernameFriend": "Nathan",' +
             ' "userFriendProfession": "Psico Pedagogo",' +
             ' "date": "17/05/22 - 22:10",' +
             ' "description": "Oi! Tudo bem? blá blá blá",' +
             ' "isUserMessage": true},' +
-            '{ "username": "Alana",' +
-            ' "usernameFriend": "Nathan",' +
+            '{ "username": "Nathan",' +
             ' "userFriendProfession": "Psico Pedagogo",' +
             ' "date": "17/05/22 - 22:10",' +
             ' "description": "Oi! Tudo bem? blá blá blá",' +
             ' "isUserMessage": true},' +
-            '{ "username": "Alana",' +
-            ' "usernameFriend": "Nathan",' +
+            '{ "username": "Eu",' +
             ' "userFriendProfession": "Psico Pedagogo",' +
             ' "date": "17/05/22 - 22:10",' +
-            ' "description": "Oi! Tudo bem? blá blá blá",' +
+            ' "description": "Oi! TudogetElementById bem? blá blá blá",' +
             ' "isUserMessage": true}]}';
 
         let textFriend3 ='{ "userFriend": "Carlos",' +
             ' "userFriendProfession": "Psicóloga", ' +
             ' "messages" : [' +
-            '{ "username": "Alana",' +
-            ' "usernameFriend": "Carlos",' +
+            '{ "username": "Carlos",' +
             ' "userFriendProfession": "Psiquiatra",' +
             ' "date": "17/05/22 - 22:10",' +
             ' "description": "Oi! Tudo bem? blá blá blá",' +
             ' "isUserMessage": true},' +
-            '{ "username": "Alana",' +
-            ' "usernameFriend": "Carlos",' +
+            '{ "username": "Eu",' +
             ' "userFriendProfession": "Psiquiatra",' +
             ' "date": "17/05/22 - 22:10",' +
             ' "description": "Oi! Tudo bem? blá blá blá",' +
             ' "isUserMessage": true},' +
-            '{ "username": "Alana",' +
-            ' "usernameFriend": "Carlos",' +
+            '{ "username": "Carlos",' +
             ' "userFriendProfession": "Psiquiatra",' +
             ' "date": "17/05/22 - 22:10",' +
             ' "description": "Oi! Tudo bem? blá blá blá",' +
             ' "isUserMessage": true}]}';
 
         function getUserMessage(userFriend) {
+            document.getElementById("main").style.display = "block";
+            document.getElementById("initial-div").style.display = "none";
+
             switch (userFriend) {
                 case 1: 
-                    cleanChat();                  
                     const obj1 = JSON.parse(textFriend1);
                     console.log(obj1);
 
-                    var htmlDescription = "";
+                    document.getElementById("container-description-user1").style.display = "block";
+                    document.getElementById("container-description-user2").style.display = "none";
+                    document.getElementById("container-description-user3").style.display = "none";
+
+                    document.getElementById("send-button1").style.display = "block";
+                    document.getElementById("send-button2").style.display = "none";
+                    document.getElementById("send-button3").style.display = "none";
 
                     document.getElementById("friendName").innerHTML = obj1.userFriend;
                     document.getElementById("friendProfession").innerHTML = obj1.userFriendProfession;
                     
+                    var htmlDescription = "";
+
                     for (let message of obj1.messages){
-                        htmlDescription += `<div class="chat" id=""><img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">`;
+                        htmlDescription += `<div class="chat" id=""> <p class="user-name-message" style="color:#31576D;">${message.username}</p>`;
                         htmlDescription += `<p id="description">${message.description}</p><span class="time-right">11:00</span></div>`;
                     };
 
-                    $("#container-description").append(htmlDescription);
+                    $("#container-description-user1").append(htmlDescription);
                     break;
                     
                 case 2:
                     const obj2 = JSON.parse(textFriend2);
                     console.log(obj2);
+
+                    document.getElementById("container-description-user1").style.display = "none";
+                    document.getElementById("container-description-user2").style.display = "block";
+                    document.getElementById("container-description-user3").style.display = "none";
+
+                    document.getElementById("send-button1").style.display = "none";
+                    document.getElementById("send-button2").style.display = "block";
+                    document.getElementById("send-button3").style.display = "none";
 
                     document.getElementById("friendName").innerHTML = obj2.userFriend;
                     document.getElementById("friendProfession").innerHTML = obj2.userFriendProfession;
@@ -170,49 +198,74 @@
                     var htmlDescription = "";
 
                     for (let message of obj2.messages){
-                        htmlDescription += `<div class="chat" id=""><img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">`;
+                        htmlDescription += `<div class="chat" id=""> <p class="user-name-message" style="color:#31576D;">${message.username}</p>`;
                         htmlDescription += `<p id="description">${message.description}</p><span class="time-right">11:00</span></div>`;
                     };
 
-                    $("#container-description").append(htmlDescription);
+                    $("#container-description-user2").append(htmlDescription);
                     break;
 
                 case 3:
                     const obj3 = JSON.parse(textFriend3);
                     console.log(obj3);
 
+                    document.getElementById("container-description-user1").style.display = "none";
+                    document.getElementById("container-description-user2").style.display = "none";
+                    document.getElementById("container-description-user3").style.display = "block";
+
+                    document.getElementById("send-button1").style.display = "none";
+                    document.getElementById("send-button2").style.display = "none";
+                    document.getElementById("send-button3").style.display = "block";
+
                     document.getElementById("friendName").innerHTML = obj3.userFriend;
                     document.getElementById("friendProfession").innerHTML = obj3.userFriendProfession;
                     
                     var htmlDescription = "";
-
+                
                     for (let message of obj3.messages){
-                        htmlDescription += `<div class="chat" id=""><img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">`;
+                        htmlDescription += `<div class="chat" id=""> <p class="user-name-message" style="color:#31576D;">${message.username}</p>`;
                         htmlDescription += `<p id="description">${message.description}</p><span class="time-right">11:00</span></div>`;
                     };
 
-                    $("#container-description").append(htmlDescription);
-
+                    $("#container-description-user3").append(htmlDescription);
                     break;    
             } 
         }
 
-        function cleanChat() {
-            let chatDiv = document.getElementById("#container-description");
-            chatDiv.innerHTML = "";
+        function addNewComent(userFriend) {
+            $(function(){
+                var newComment = $(".message-text").text();
+            
+                var htmlDescription = "";
+                htmlDescription += `<div class="chat" id=""><p class="user-name-message" style="color:#31576D;">Eu</p>`;
+                        htmlDescription += `<p id="description">${newComment}</p><span class="time-right">11:00</span></div>`;
 
+                switch (userFriend) {
+                    case 1:
+                        $("#container-description-user1").append(htmlDescription);
+                        break;
+                    case 2:
+                        $("#container-description-user2").append(htmlDescription);
+                        break;
+                    case 3:
+                        $("#container-description-user3").append(htmlDescription);
+                        break;
+                }
+            })
         }
 
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
             document.getElementById("main").style.marginLeft = "250px";
             document.getElementById("chatBox").style.marginLeft = "250px";
+            document.getElementById("initial-div").style.marginLeft = "250px";
         }
 
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
             document.getElementById("main").style.marginLeft = "0";
             document.getElementById("chatBox").style.marginLeft = "0";
+            document.getElementById("initial-div").style.marginLeft = "0";
         }
     </script>
-</html>
+</html>                                   
